@@ -52,8 +52,11 @@ def simulate(algs, *, seed=42, rounds=200):
             score[idx_B][idx_A] = B_score
 
     for line in range(len(algs)):
+        s = sum(score[line])
+        score[line].insert(0, s)
         score[line].insert(0, "{!r}".format(algs[line]))
-    score.insert(0, ["{!r}".format(a) for a in ["A↓ B→"] + algs])
+    score.sort(key=lambda l: l[1], reverse=True)
+    score.insert(0, ["{!r}".format(a) for a in ["A↓ B→", "total"] + algs])
     print_mat(score)
 
 def print_mat(matrix):
