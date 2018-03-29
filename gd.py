@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import random
 import sys
 import inspect
@@ -77,7 +77,6 @@ def inst_all():
     return inst
 
 ################################################################################
-# Random
 class Tim(Alg):
     def __init__(self, p_silent=0.5):
         self.p_silent = p_silent
@@ -184,3 +183,8 @@ class WinStayLoseShift(Alg):
             return BETRAY
         return SILENT
 
+####################################################################################################
+### main
+if __name__ == '__main__':
+    algs = inst_all()
+    simulate(algs, seed=42, rounds=200)
